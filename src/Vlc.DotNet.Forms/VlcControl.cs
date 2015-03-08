@@ -115,18 +115,7 @@ namespace Vlc.DotNet.Forms
             get { return myVlcMediaPlayer.Position; }
             set { myVlcMediaPlayer.Position = value; }
         }
-
-        public long Length
-        {
-            get { return myVlcMediaPlayer.Length; }
-        }
-
-        public long Time
-        {
-            get { return myVlcMediaPlayer.Time; }
-            set { myVlcMediaPlayer.Time = value; }
-        }
-
+        
         public IChapterManagement Chapter
         {
             get

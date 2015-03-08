@@ -37,28 +37,22 @@ namespace Vlc.DotNet.Wpf.Samples
         private void OnForwardButtonClick(object sender, RoutedEventArgs e)
         {
             myControl.MediaPlayer.Rate = 2;
-
         }
 
         private void GetLength_Click(object sender, RoutedEventArgs e)
         {
-
             GetLength.Content = myControl.MediaPlayer.Length + " ms";
         }
 
         private void GetCurrentTime_Click(object sender, RoutedEventArgs e)
         {
-
             GetCurrentTime.Content = myControl.MediaPlayer.Time + " ms";
-
         }
 
         private void SetCurrentTime_Click(object sender, RoutedEventArgs e)
         {
             myControl.MediaPlayer.Time = 5000;
-
             SetCurrentTime.Content = myControl.MediaPlayer.Time + " ms";
-
         }
     }
 }

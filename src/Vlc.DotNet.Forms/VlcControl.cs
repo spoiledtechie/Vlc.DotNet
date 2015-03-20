@@ -119,6 +119,7 @@ namespace Vlc.DotNet.Forms
 
         public VlcMedia GetCurrentMedia()
         {
+            EndInit();
             return myVlcMediaPlayer.GetMedia();
         }
 

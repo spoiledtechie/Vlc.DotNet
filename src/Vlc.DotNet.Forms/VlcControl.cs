@@ -73,6 +73,18 @@ namespace Vlc.DotNet.Forms
             return null;
         }
 
+        public void SetMedia(FileInfo file, params string[] options)
+        {
+            EndInit();
+            myVlcMediaPlayer.SetMedia(file, options);
+        }
+
+        public void SetMedia(Uri file, params string[] options)
+        {
+            EndInit();
+            myVlcMediaPlayer.SetMedia(file, options);
+        }
+
         public void Play()
         {
             EndInit();
@@ -115,7 +127,7 @@ namespace Vlc.DotNet.Forms
             get { return myVlcMediaPlayer.Position; }
             set { myVlcMediaPlayer.Position = value; }
         }
-        
+
         public IChapterManagement Chapter
         {
             get

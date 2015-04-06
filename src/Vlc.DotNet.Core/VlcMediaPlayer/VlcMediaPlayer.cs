@@ -157,6 +157,11 @@ namespace Vlc.DotNet.Core
             return Manager.IsPlaying(myMediaPlayerInstance);
         }
 
+        public Rectangle GetRectangle()
+        {
+            return Manager.GetRectangle(myMediaPlayerInstance);
+        }
+
         public bool IsPausable()
         {
             return Manager.IsPausable(myMediaPlayerInstance);

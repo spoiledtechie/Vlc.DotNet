@@ -93,8 +93,10 @@
       <Link>Properties\AssemblyInfo.Common.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VlcControl.cs" />
+    <Compile Include="Form\VlcControl.cs" />
     <Compile Include="VlcLibDirectoryNeededEventArgs.cs" />
+    <Compile Include="Window\VlcControl.cs" />
+    <Compile Include="Window\VlcControl.Events.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

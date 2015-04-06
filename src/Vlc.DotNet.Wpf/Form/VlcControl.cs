@@ -3,8 +3,13 @@ using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using Vlc.DotNet.Core.Interops;
 
-namespace Vlc.DotNet.Wpf
+namespace Vlc.DotNet.Wpf.Form
 {
+    /// <summary>
+    /// this control is pulled from the Forms and can be attached onto smaller windows
+    /// But also has airspace issues.
+    /// http://blogs.msdn.com/b/dwayneneed/archive/2013/02/26/mitigating-airspace-issues-in-wpf-applications.aspx
+    /// </summary>
     public class VlcControl : HwndHost 
     {
         public Forms.VlcControl MediaPlayer { get; private set; }

@@ -132,6 +132,7 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_device_longname.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_device_set.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_device_types_t.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_rectangle_get.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_list_get.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_list_release.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_set.cs" />
@@ -312,6 +313,7 @@
     <Compile Include="VlcManager.SetVideoSpuDelay.cs" />
     <Compile Include="VlcManager.SetVideoTeletext.cs" />
     <Compile Include="VlcManager.SetVideoTrack.cs" />
+    <Compile Include="VlcManager.GetRectangle.cs" />
     <Compile Include="VlcManager.SetVolume.cs" />
     <Compile Include="VlcManager.Stop.cs" />
     <Compile Include="VlcManager.TakeSnapshot.cs" />

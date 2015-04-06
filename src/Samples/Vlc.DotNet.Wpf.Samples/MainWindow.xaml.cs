@@ -32,6 +32,8 @@ namespace Vlc.DotNet.Wpf.Samples
         {
             myControl.MediaPlayer.SetMedia(new Uri("http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi"));
             myControl.MediaPlayer.Play();
+           var rect  = myControl.MediaPlayer.GetRectangle();
+
             //myControl.MediaPlayer.Play(new FileInfo(@"..\..\..\Vlc.DotNet\Samples\Videos\BBB trailer.mov"));
         }
 

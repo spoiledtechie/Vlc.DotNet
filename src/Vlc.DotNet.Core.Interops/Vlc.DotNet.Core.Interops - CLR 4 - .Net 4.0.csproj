@@ -169,6 +169,7 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_stop.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_will_play.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_navigate_mode_t.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_rectangle_get.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_rectangle_t.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_track_description_list_release.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_track_description_t.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="VlcIntance.cs" />
     <Compile Include="VlcManager.GetLength.cs" />
     <Compile Include="VlcManager.GetMediaPlayerVideoHostHandle.cs" />
+    <Compile Include="VlcManager.GetRectangle.cs" />
     <Compile Include="VlcManager.GetTime.cs" />
     <Compile Include="VlcManager.SetTime.cs" />
     <Compile Include="VlcManager.TakeSnapshot.cs" />

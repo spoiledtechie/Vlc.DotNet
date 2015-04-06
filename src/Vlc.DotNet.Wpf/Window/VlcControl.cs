@@ -1,20 +1,23 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Drawing.Design;
 using System.IO;
-using System.Windows.Forms;
+using System.Windows.Controls;
 using Vlc.DotNet.Core;
 using Vlc.DotNet.Core.Interops.Signatures;
-using Vlc.DotNet.Forms.TypeEditors;
 
-namespace Vlc.DotNet.Forms
+namespace Vlc.DotNet.Wpf.Window
 {
-    public partial class VlcControl : Control, ISupportInitialize
+    /// <summary>
+    /// this control is built upon wpf content control and no longer has airspace issues.
+    /// due to the VLCLib library, it still requires a Handle to attach it self to
+    /// so this control will take up the full window, but no longer has airspace issues 
+    /// as you can now draw things over it
+    /// </summary>
+    public partial class VlcControl : ContentControl, ISupportInitialize
     {
         private VlcMediaPlayer myVlcMediaPlayer;
 
-        [Editor(typeof(DirectoryEditor), typeof(UITypeEditor))]
-        public DirectoryInfo VlcLibDirectory { get; set; }
+        public string VlcLibDirectory { get; set; }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
@@ -27,17 +30,27 @@ namespace Vlc.DotNet.Forms
         {
         }
 
+        private IntPtr _handle;
+
+        public void SetHandle(IntPtr handle)
+        {
+            _handle = handle;
+            myVlcMediaPlayer.VideoHostControlHandle = handle;
+        }
+
         public void EndInit()
         {
             if (IsInDesignMode() || myVlcMediaPlayer != null)
                 return;
-            if (VlcLibDirectory == null && (VlcLibDirectory = OnVlcLibDirectoryNeeded()) == null)
+            DirectoryInfo dir = null;
+            if (VlcLibDirectory == null && (dir = OnVlcLibDirectoryNeeded()) == null)
             {
                 throw new Exception("'VlcLibDirectory' must be set.");
             }
-            myVlcMediaPlayer = new VlcMediaPlayer(VlcLibDirectory);
-            myVlcMediaPlayer.VideoHostControlHandle = Handle;
+            myVlcMediaPlayer = new VlcMediaPlayer(new DirectoryInfo(VlcLibDirectory));
+            myVlcMediaPlayer.VideoHostControlHandle = _handle;
             RegisterEvents();
+
         }
 
         // work around http://stackoverflow.com/questions/34664/designmode-with-controls/708594
@@ -48,7 +61,7 @@ namespace Vlc.DotNet.Forms
 
         public event EventHandler<VlcLibDirectoryNeededEventArgs> VlcLibDirectoryNeeded;
 
-        protected override void Dispose(bool disposing)
+        protected void Dispose(bool disposing)
         {
             if (myVlcMediaPlayer != null)
             {
@@ -56,7 +69,7 @@ namespace Vlc.DotNet.Forms
                 if (IsPlaying)
                     Stop();
                 myVlcMediaPlayer.Dispose();
-                base.Dispose(disposing);
+                //base.Dispose(disposing);
                 GC.SuppressFinalize(this);
             }
         }
@@ -73,15 +86,15 @@ namespace Vlc.DotNet.Forms
             return null;
         }
 
-        public Rectangle GetRectangle()
-        {
-           return  myVlcMediaPlayer.GetRectangle();
-        }
-
         public void Play()
         {
             EndInit();
             myVlcMediaPlayer.Play();
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return myVlcMediaPlayer.GetRectangle();
         }
 
         public void Play(FileInfo file, params string[] options)
